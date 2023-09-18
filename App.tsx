@@ -8,18 +8,18 @@ import {
   NavigationState,
 } from 'react-native-tab-view';
 import {Animated} from 'react-native';
-import Phone from './src/pages/Login/Phone';
-import Pass from './src/pages/Login/Pass';
+import Login from './src/pages/Login';
+import Register from './src/pages/Login/Register';
 
 const App = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    {key: 'phone', title: '手机号登录'},
-    {key: 'pass', title: '密码登录'},
+    {key: 'login', title: '登录'},
+    {key: 'register', title: '注册'},
   ]);
   const renderScene = SceneMap({
-    phone: Phone,
-    pass: Pass,
+    login: Login,
+    register: Register,
   });
 
   const renderTabBar = (

@@ -4,7 +4,7 @@ import {Text} from 'native-base';
 export default function Pass() {
   return (
     <>
-      <Text>密码登录</Text>
+      <Text>注册</Text>
     </>
   );
 }
