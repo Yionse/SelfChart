@@ -4,7 +4,7 @@ import {Text} from 'native-base';
 export default function Forget() {
   return (
     <>
-      <Text>忘记密码</Text>
+      <Text>功能开发中</Text>
     </>
   );
 }

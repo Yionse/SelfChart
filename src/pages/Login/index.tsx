@@ -26,7 +26,7 @@ export default function Login() {
   });
 
   const onLogin = () => {
-    console.log('点击了登录按钮');
+    navigation.navigate('Home');
   };
 
   const handleRegisterForget = (text: string) => {
