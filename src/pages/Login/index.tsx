@@ -4,7 +4,7 @@ import {Icon, Input, Button, Text, View, Pressable} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StyleSheet} from 'react-native';
-import {SetIndexContext} from '../../../App';
+import {SetIndexContext} from '../../utils';
 
 export default function Login() {
   const [isShowPass, setIsShowPass] = useState(false);

@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {useState, createContext, Dispatch, SetStateAction} from 'react';
 import {NativeBaseProvider, View, Pressable, StatusBar} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -10,12 +10,10 @@ import {
 import {Animated} from 'react-native';
 import Login from './src/pages/Login';
 import Register from './src/pages/Login/Register';
-import Home from './src/pages/Home';
-
-export const SetIndexContext = createContext({});
+import {SetIndexContext} from './src/utils';
 
 const App = () => {
-  const [routes] = React.useState([
+  const [routes] = useState([
     {key: 'login', title: '登录'},
     {key: 'register', title: '注册'},
   ]);
@@ -24,7 +22,7 @@ const App = () => {
     register: Register,
   });
 
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
 
   const renderTabBar = (
     props: SceneRendererProps & {
