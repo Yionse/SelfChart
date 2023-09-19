@@ -117,7 +117,7 @@ export default function Login() {
               borderRadius={10}
               onPress={handleSubmit}
               mx={4}
-              disabled={isClickHandle(Object.values(values))}
+              disabled={!isClickHandle(Object.values(values))}
               background={
                 isClickHandle(Object.values(values)) ? '#0891b2' : 'gray.400'
               }>
