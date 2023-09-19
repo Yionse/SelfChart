@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {Formik} from 'formik';
-import {Icon, Input, Button, Text, View, Pressable} from 'native-base';
+import {Icon, Input, Button, Pressable} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StyleSheet} from 'react-native';
+import {isClickHandle} from './index';
 
 export default function Register() {
   const [isShowPass, setIsShowPass] = useState(false);
@@ -38,7 +39,7 @@ export default function Register() {
                     typeStr === 'phone' ? '请输入手机号' : '请输入昵称'
                   }
                   onChangeText={handleChange(
-                    typeStr === 'phone' ? 'phone' : 'name',
+                    typeStr === 'phone' ? 'phone' : 'userName',
                   )}
                   onBlur={handleBlur(typeStr === 'phone' ? 'phone' : 'name')}
                   InputLeftElement={
@@ -111,7 +112,15 @@ export default function Register() {
                 />
               );
             })}
-            <Button mt={4} borderRadius={10} onPress={handleSubmit} mx={4}>
+            <Button
+              mt={4}
+              borderRadius={10}
+              onPress={handleSubmit}
+              mx={4}
+              disabled={isClickHandle(Object.values(values))}
+              bg={
+                isClickHandle(Object.values(values)) ? '#0891b2' : 'gray.400'
+              }>
               注册
             </Button>
           </>

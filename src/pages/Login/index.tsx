@@ -4,11 +4,17 @@ import {Icon, Input, Button, Text, View, Pressable} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StyleSheet} from 'react-native';
-import {SetIndexContext} from '../../utils';
+import {SetIndexContext} from '../../contexts';
+import {useNavigation} from '@react-navigation/native';
+
+export const isClickHandle = (currentVal: string[]) => {
+  return currentVal.every(str => str !== '');
+};
 
 export default function Login() {
   const [isShowPass, setIsShowPass] = useState(false);
   const setIndex = useContext(SetIndexContext);
+  const navigation = useNavigation<any>();
 
   const style = StyleSheet.create({
     inputStyle: {
@@ -25,7 +31,7 @@ export default function Login() {
 
   const handleRegisterForget = (text: string) => {
     if (text === '忘记密码') {
-      console.log('忘记密码');
+      navigation.navigate('Forget');
     } else {
       setIndex(1);
     }
@@ -106,7 +112,15 @@ export default function Login() {
               })}
             </View>
 
-            <Button mt={4} borderRadius={10} onPress={handleSubmit} mx={4}>
+            <Button
+              mt={4}
+              borderRadius={10}
+              onPress={handleSubmit}
+              mx={4}
+              disabled={isClickHandle(Object.values(values))}
+              background={
+                isClickHandle(Object.values(values)) ? '#0891b2' : 'gray.400'
+              }>
               登录
             </Button>
           </>

@@ -1,5 +1,11 @@
-import React, {useState, createContext, Dispatch, SetStateAction} from 'react';
-import {NativeBaseProvider, View, Pressable, StatusBar} from 'native-base';
+import React, {useState} from 'react';
+import {
+  NativeBaseProvider,
+  View,
+  Pressable,
+  StatusBar,
+  Stack,
+} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   TabView,
@@ -10,9 +16,11 @@ import {
 import {Animated} from 'react-native';
 import Login from './src/pages/Login';
 import Register from './src/pages/Login/Register';
-import {SetIndexContext} from './src/utils';
+import Forget from './src/pages/Login/Forget';
+import {SetIndexContext} from './src/contexts';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const App = () => {
+function Main() {
   const [routes] = useState([
     {key: 'login', title: '登录'},
     {key: 'register', title: '注册'},
@@ -66,20 +74,44 @@ const App = () => {
     );
   };
   return (
+    <SetIndexContext.Provider value={setIndex}>
+      <StatusBar backgroundColor="#ccc" />
+      <View flex={1} px={2} py={10} bgColor="#eee">
+        <TabView
+          navigationState={{index, routes}}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={{width: 320}}
+          renderTabBar={renderTabBar}
+        />
+      </View>
+    </SetIndexContext.Provider>
+  );
+}
+
+const App = () => {
+  const Stack = createNativeStackNavigator();
+
+  return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <StatusBar backgroundColor="#ccc" />
-        <View flex={1} px={2} py={10} bgColor="#eee">
-          <SetIndexContext.Provider value={setIndex}>
-            <TabView
-              navigationState={{index, routes}}
-              renderScene={renderScene}
-              onIndexChange={setIndex}
-              initialLayout={{width: 320}}
-              renderTabBar={renderTabBar}
-            />
-          </SetIndexContext.Provider>
-        </View>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitleAlign: 'center',
+          }}>
+          <Stack.Screen
+            name="Main"
+            component={Main}
+            options={{
+              header: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="Forget"
+            component={Forget}
+            options={{title: '忘记密码'}}
+          />
+        </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
