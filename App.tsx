@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import {NativeBaseProvider, View, Pressable, StatusBar} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -10,9 +10,11 @@ import {
 import {Animated} from 'react-native';
 import Login from './src/pages/Login';
 import Register from './src/pages/Login/Register';
+import Home from './src/pages/Home';
+
+export const SetIndexContext = createContext({});
 
 const App = () => {
-  const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'login', title: '登录'},
     {key: 'register', title: '注册'},
@@ -21,6 +23,8 @@ const App = () => {
     login: Login,
     register: Register,
   });
+
+  const [index, setIndex] = React.useState(0);
 
   const renderTabBar = (
     props: SceneRendererProps & {
@@ -67,14 +71,16 @@ const App = () => {
     <NativeBaseProvider>
       <NavigationContainer>
         <StatusBar backgroundColor="#ccc" />
-        <View flex={1} px={5} py={10} bgColor="#ccc">
-          <TabView
-            navigationState={{index, routes}}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            initialLayout={{width: 320}}
-            renderTabBar={renderTabBar}
-          />
+        <View flex={1} px={2} py={10} bgColor="#eee">
+          <SetIndexContext.Provider value={setIndex}>
+            <TabView
+              navigationState={{index, routes}}
+              renderScene={renderScene}
+              onIndexChange={setIndex}
+              initialLayout={{width: 320}}
+              renderTabBar={renderTabBar}
+            />
+          </SetIndexContext.Provider>
         </View>
       </NavigationContainer>
     </NativeBaseProvider>
