@@ -6,6 +6,7 @@ import {Icon, Button, Text} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Drawer} from 'react-native-drawer-layout';
+import Info from '../Info';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,9 +18,7 @@ export default function Home() {
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
-        renderDrawerContent={() => {
-          return <Text>Drawer content</Text>;
-        }}
+        renderDrawerContent={() => <Info />}
         swipeEdgeWidth={128}>
         <Tab.Navigator initialRouteName="Chart">
           <Tab.Screen
