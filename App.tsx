@@ -1,12 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
-import {
-  NativeBaseProvider,
-  View,
-  Pressable,
-  StatusBar,
-  Stack,
-} from 'native-base';
+import {NativeBaseProvider, View, Pressable, StatusBar} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   TabView,
@@ -21,6 +15,7 @@ import Forget from './src/pages/Login/Forget';
 import Home from './src/pages/Home';
 import {SetIndexContext} from './src/contexts';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import theme from './theme';
 
 function Main() {
   const [routes] = useState([
@@ -95,7 +90,7 @@ const App = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
