@@ -1,8 +1,7 @@
 import React from 'react';
 import {Text, View} from 'native-base';
-import {infoStyle} from './index';
 
-export default function UserInfo() {
+export default function UserInfo({infoStyle}: any) {
   return (
     <>
       <View>

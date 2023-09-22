@@ -1,5 +1,4 @@
 import {Text, View} from 'native-base';
-import {infoStyle} from './';
 import React, {useEffect, useState} from 'react';
 import DeviceInfo from 'react-native-device-info';
 export type DeviceInfoType = {
@@ -69,7 +68,7 @@ const getDeviceInfo = async () => {
   };
 };
 
-export default function Device() {
+export default function Device({infoStyle}: any) {
   const [res, setRes] = useState<DeviceInfoType>();
   useEffect(() => {
     getDeviceInfo().then(res => setRes(res));
@@ -80,7 +79,7 @@ export default function Device() {
   ) => {
     if (value) {
       if (isChang) {
-        // 将内存换算为G单位
+        // 将存储单位换算为GB
         value = ((value as number) / Math.pow(1024, 3)).toFixed() + 'G';
       }
       return value;
