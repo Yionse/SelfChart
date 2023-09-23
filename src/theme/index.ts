@@ -6,6 +6,7 @@ export type ThemeType = {
   primaryColor: string;
   tabBarActiveColor: string;
   headerLeftBtn: string;
+  chartBorderBottomColor: string;
 };
 
 const theme = [initTheme, dark];

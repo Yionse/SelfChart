@@ -5,6 +5,7 @@ const dark: ThemeType = {
   primaryColor: 'green',
   tabBarActiveColor: 'red',
   headerLeftBtn: 'red.100',
+  chartBorderBottomColor: '#eee',
 };
 
 export default dark;

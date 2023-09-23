@@ -1,10 +1,16 @@
 import React from 'react';
-import {Text} from 'native-base';
+import {ScrollView, Text} from 'native-base';
+import Item from './Item';
+import _ from 'lodash';
 
 export default function Chart() {
   return (
     <>
-      <Text>消息界面</Text>
+      <ScrollView flex={1}>
+        {_.range(1, 20).map(() => (
+          <Item />
+        ))}
+      </ScrollView>
     </>
   );
 }

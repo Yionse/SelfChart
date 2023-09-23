@@ -96,6 +96,11 @@ const App = () => {
             headerTitleAlign: 'center',
           }}>
           <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{header: () => null}}
+          />
+          <Stack.Screen
             name="Main"
             component={Main}
             options={{
@@ -106,11 +111,6 @@ const App = () => {
             name="Forget"
             component={Forget}
             options={{title: '忘记密码'}}
-          />
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{header: () => null}}
           />
         </Stack.Navigator>
       </NavigationContainer>
