@@ -1,10 +1,14 @@
 import React from 'react';
-import {Text} from 'native-base';
+import {ScrollView, Text} from 'native-base';
+import MessagesItem from './MessagesItem';
+import _ from 'lodash';
 
 export default function Contacts() {
   return (
-    <>
-      <Text>联系人</Text>
-    </>
+    <ScrollView flex={1}>
+      {_.range(1, 10).map(() => (
+        <MessagesItem type="contact" />
+      ))}
+    </ScrollView>
   );
 }

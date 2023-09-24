@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, Text} from 'native-base';
-import Item from './Item';
+import Item from './MessagesItem';
 import _ from 'lodash';
 
 export default function Chart() {
