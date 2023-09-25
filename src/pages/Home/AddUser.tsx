@@ -1,10 +1,19 @@
 import React from 'react';
-import {Input, ScrollView, Text, View, Button, Icon} from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import _ from 'lodash';
+import {
+  Input,
+  ScrollView,
+  Text,
+  View,
+  Button,
+  Icon,
+  useToast,
+} from 'native-base';
+import _, {sortedLastIndex} from 'lodash';
+import Apply from './Apply';
 
-export default function AddUser() {
+export default function AddUser({route}: any) {
+  const toast = useToast();
+  const isFriendApply = route?.params?.isFriendApply || false;
   return (
     <>
       <View flex={1} p={4}>
@@ -20,35 +29,13 @@ export default function AddUser() {
           placeholder="输入账号或昵称"
         />
         <ScrollView flex={1} my={2}>
-          {_.range(1, 20).map(index => (
-            <View
-              flexDirection="row"
-              justifyContent="space-between"
-              px={4}
-              borderBottomColor="blue.100"
-              borderBottomWidth={1}
-              pb={2}
-              my={2}>
-              <View>
-                <Text>昵称</Text>
-                <Text>123456</Text>
-              </View>
-              <Button
-                leftIcon={
-                  index % 2 === 0 ? (
-                    <Icon as={Ionicons} name="add" />
-                  ) : (
-                    <Icon as={AntDesign} name="reload1" />
-                  )
-                }
-                color="black"
-                size="sm"
-                disabled={index % 2 === 0 ? false : true}
-                opacity={index % 2 === 0 ? 1 : 0.3}>
-                {index % 2 === 0 ? '添加好友' : '等待验证'}
-              </Button>
-            </View>
-          ))}
+          {_.range(1, 20).map(index => {
+            if (isFriendApply) {
+              return index % 2 !== 0 && <Apply index={index} />;
+            } else {
+              return <Apply index={index} />;
+            }
+          })}
         </ScrollView>
       </View>
     </>

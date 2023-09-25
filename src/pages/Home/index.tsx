@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Chart from './Chart';
 import Contacts from './Contacts';
-import {Icon} from 'native-base';
+import {Icon, Text} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Drawer} from 'react-native-drawer-layout';
@@ -45,14 +45,16 @@ export default function Home() {
                 />
               ),
               headerRight: () => (
-                <Icon
-                  as={AntDesign}
-                  name="adduser"
-                  size={6}
-                  color={currentTheme?.headerLeftBtn}
-                  marginRight={2}
-                  onPress={() => navigation.navigate('AddUser')}
-                />
+                <>
+                  <Icon
+                    as={AntDesign}
+                    name="adduser"
+                    size={6}
+                    color={currentTheme?.headerLeftBtn}
+                    marginRight={2}
+                    onPress={() => navigation.navigate('AddUser')}
+                  />
+                </>
               ),
             }}>
             <Tab.Screen

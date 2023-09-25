@@ -122,7 +122,7 @@ const App = () => {
           <Stack.Screen
             name="AddUser"
             component={AddUser}
-            options={{title: '添加用户'}}
+            options={{title: '添加好友'}}
           />
         </Stack.Navigator>
       </NavigationContainer>
