@@ -7,8 +7,8 @@ export default function Chart() {
   return (
     <>
       <ScrollView flex={1}>
-        {_.range(1, 20).map(() => (
-          <Item />
+        {_.range(1, 20).map(index => (
+          <Item key={index} />
         ))}
       </ScrollView>
     </>

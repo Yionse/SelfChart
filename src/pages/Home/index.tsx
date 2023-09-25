@@ -9,6 +9,7 @@ import {Drawer} from 'react-native-drawer-layout';
 import Info from '../Info';
 import {ThemeContext} from './../../contexts';
 import theme from './../../theme/index';
+import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [themeIndex, setThemeIndex] = useState(0);
   const currentTheme = theme[themeIndex];
+  const navigation = useNavigation<any>();
   return (
     <>
       <ThemeContext.Provider value={{themeIndex, currentTheme, setThemeIndex}}>
@@ -40,6 +42,16 @@ export default function Home() {
                   color={currentTheme?.headerLeftBtn}
                   marginLeft={2}
                   onPress={() => setOpen(true)}
+                />
+              ),
+              headerRight: () => (
+                <Icon
+                  as={AntDesign}
+                  name="adduser"
+                  size={6}
+                  color={currentTheme?.headerLeftBtn}
+                  marginRight={2}
+                  onPress={() => navigation.navigate('AddUser')}
                 />
               ),
             }}>

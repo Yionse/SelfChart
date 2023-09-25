@@ -2,11 +2,14 @@ import React, {useContext} from 'react';
 import {StyleSheet} from 'react-native';
 import Device from './DeviceInfo';
 import User from './UserInfo';
-import {Icon, View} from 'native-base';
+import {Icon, View, Text} from 'native-base';
 import {ThemeContext} from '../../contexts';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Info() {
+  const navigation = useNavigation<any>();
   const {currentTheme, setThemeIndex, themeIndex} = useContext(ThemeContext);
   const changeTheme = () => {
     if (themeIndex === 0) {
@@ -14,6 +17,9 @@ export default function Info() {
     } else {
       setThemeIndex(0);
     }
+  };
+  const settingsHandle = () => {
+    navigation.navigate('Settings');
   };
   const infoStyle = StyleSheet.create({
     text: {
@@ -37,15 +43,30 @@ export default function Info() {
     <>
       <User infoStyle={infoStyle} />
       <Device infoStyle={infoStyle} />
-      <View flexDirection="row" my={8} mx={4}>
-        <Icon
-          as={FontAwesome5}
-          name={themeIndex === 0 ? 'sun' : 'moon'}
-          size="2xl"
-          color={currentTheme?.primaryColor}
-          mx={1}
-          onPress={changeTheme}
-        />
+      <View my={8} mx={4}>
+        {['主题切换', '个人设置'].map(val => {
+          return (
+            <View flexDirection="row" my={2}>
+              <Text height={8} lineHeight={30} fontSize={20}>
+                {val}：
+              </Text>
+              <Icon
+                as={val === '主题切换' ? FontAwesome5 : AntDesign}
+                name={
+                  val === '主题切换'
+                    ? themeIndex === 0
+                      ? 'sun'
+                      : 'moon'
+                    : 'setting'
+                }
+                size="2xl"
+                color={currentTheme?.primaryColor}
+                mx={1}
+                onPress={val === '主题切换' ? changeTheme : settingsHandle}
+              />
+            </View>
+          );
+        })}
       </View>
     </>
   );
