@@ -7,6 +7,8 @@ export type ThemeType = {
   tabBarActiveColor: string;
   headerLeftBtn: string;
   chartBorderBottomColor: string;
+  meMessageBackgroundColor: string;
+  otherMessageBackgroundColor: string;
 };
 
 const theme = [initTheme, dark];

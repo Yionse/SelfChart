@@ -6,6 +6,8 @@ const dark: ThemeType = {
   tabBarActiveColor: 'red',
   headerLeftBtn: 'red.100',
   chartBorderBottomColor: '#eee',
+  meMessageBackgroundColor: 'gray',
+  otherMessageBackgroundColor: 'rgba(113, 123, 222,.7)',
 };
 
 export default dark;

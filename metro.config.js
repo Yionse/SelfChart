@@ -14,4 +14,7 @@ module.exports = {
       },
     }),
   },
+  resolver: {
+    assetExts: ['png', 'jpg', 'jpeg', 'gif', 'svg'], // 添加图片后缀类型
+  },
 };
