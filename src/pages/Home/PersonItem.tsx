@@ -19,7 +19,7 @@ export default function PersonItem() {
           backgroundColor: currentTheme.chartBorderBottomColor,
         }}
         onPress={() => {
-          navigation.navigate('ChartModel', {
+          navigation.navigate('ChatModel', {
             title: '发给谁',
           });
         }}>

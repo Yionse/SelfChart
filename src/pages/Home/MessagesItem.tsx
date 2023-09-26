@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import {Text, Pressable} from 'native-base';
 import {ThemeContext} from '../../contexts';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Item() {
   const {currentTheme} = useContext(ThemeContext);
+  const navigation = useNavigation<any>();
   return (
     <>
       <Pressable
@@ -15,6 +17,11 @@ export default function Item() {
         paddingLeft={4}
         _pressed={{
           backgroundColor: currentTheme.chartBorderBottomColor,
+        }}
+        onPress={() => {
+          navigation.navigate('ChatModel', {
+            title: '从聊天界面',
+          });
         }}>
         <Text fontSize="xl" lineHeight={24}>
           123456

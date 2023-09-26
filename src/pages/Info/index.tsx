@@ -46,7 +46,7 @@ export default function Info() {
       <View my={8} mx={4}>
         {['主题切换', '个人设置'].map(val => {
           return (
-            <View flexDirection="row" my={2}>
+            <View flexDirection="row" my={2} key={val}>
               <Text height={8} lineHeight={30} fontSize={20}>
                 {val}：
               </Text>

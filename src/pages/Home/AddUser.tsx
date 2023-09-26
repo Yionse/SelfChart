@@ -22,9 +22,9 @@ export default function AddUser({route}: any) {
         <ScrollView flex={1} my={2}>
           {_.range(1, 20).map(index => {
             if (isFriendApply) {
-              return index % 2 !== 0 && <Apply index={index} />;
+              return index % 2 !== 0 && <Apply index={index} key={index} />;
             } else {
-              return <Apply index={index} />;
+              return <Apply index={index} key={index} />;
             }
           })}
         </ScrollView>

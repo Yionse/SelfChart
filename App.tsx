@@ -21,9 +21,6 @@ import Forget from './src/pages/Login/Forget';
 import Home from './src/pages/Home';
 import {SetIndexContext} from './src/contexts';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Settings from './src/pages/Home/Settings';
-import AddUser from './src/pages/Home/AddUser';
-import ChartModel from './src/pages/Home/ChartModel';
 
 function Main() {
   const [routes] = useState([
@@ -121,17 +118,6 @@ const App = () => {
             component={Forget}
             options={{title: '忘记密码'}}
           />
-          <Stack.Screen
-            name="Settings"
-            component={Settings}
-            options={{title: '个人设置'}}
-          />
-          <Stack.Screen
-            name="AddUser"
-            component={AddUser}
-            options={{title: '添加好友'}}
-          />
-          <Stack.Screen name="ChartModel" component={ChartModel} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
