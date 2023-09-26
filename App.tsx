@@ -1,6 +1,12 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
-import {NativeBaseProvider, View, Pressable, StatusBar} from 'native-base';
+import {
+  NativeBaseProvider,
+  View,
+  Pressable,
+  StatusBar,
+  Text,
+} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   TabView,
@@ -17,6 +23,7 @@ import {SetIndexContext} from './src/contexts';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Settings from './src/pages/Home/Settings';
 import AddUser from './src/pages/Home/AddUser';
+import ChartModel from './src/pages/Home/ChartModel';
 
 function Main() {
   const [routes] = useState([
@@ -124,6 +131,7 @@ const App = () => {
             component={AddUser}
             options={{title: '添加好友'}}
           />
+          <Stack.Screen name="ChartModel" component={ChartModel} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

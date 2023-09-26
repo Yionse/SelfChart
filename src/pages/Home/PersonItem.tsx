@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import {Text, Pressable} from 'native-base';
 import {ThemeContext} from '../../contexts';
+import {useNavigation} from '@react-navigation/native';
 
-export default function Item() {
+export default function PersonItem() {
   const {currentTheme} = useContext(ThemeContext);
+  const navigation = useNavigation<any>();
   return (
     <>
       <Pressable
@@ -15,12 +17,14 @@ export default function Item() {
         paddingLeft={4}
         _pressed={{
           backgroundColor: currentTheme.chartBorderBottomColor,
+        }}
+        onPress={() => {
+          navigation.navigate('ChartModel', {
+            title: '发给谁',
+          });
         }}>
-        <Text fontSize="xl" lineHeight={24}>
+        <Text fontSize="xl" lineHeight={44}>
           123456
-        </Text>
-        <Text opacity="0.4" fontSize="xs">
-          你吃饭了没
         </Text>
       </Pressable>
     </>

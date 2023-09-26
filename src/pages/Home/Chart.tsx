@@ -1,6 +1,6 @@
 import React from 'react';
-import {ScrollView, Text} from 'native-base';
-import Item from './MessagesItem';
+import {ScrollView} from 'native-base';
+import MessagesItem from './MessagesItem';
 import _ from 'lodash';
 
 export default function Chart() {
@@ -8,7 +8,7 @@ export default function Chart() {
     <>
       <ScrollView flex={1}>
         {_.range(1, 20).map(index => (
-          <Item key={index} />
+          <MessagesItem key={index + `${+new Date()}`} />
         ))}
       </ScrollView>
     </>

@@ -1,18 +1,9 @@
 import React from 'react';
-import {
-  Input,
-  ScrollView,
-  Text,
-  View,
-  Button,
-  Icon,
-  useToast,
-} from 'native-base';
-import _, {sortedLastIndex} from 'lodash';
+import {Input, ScrollView, Text, View} from 'native-base';
+import _ from 'lodash';
 import Apply from './Apply';
 
 export default function AddUser({route}: any) {
-  const toast = useToast();
   const isFriendApply = route?.params?.isFriendApply || false;
   return (
     <>

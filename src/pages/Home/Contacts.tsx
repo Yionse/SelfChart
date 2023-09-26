@@ -1,8 +1,8 @@
 import React from 'react';
 import {Pressable, ScrollView, Text} from 'native-base';
-import MessagesItem from './MessagesItem';
 import _ from 'lodash';
 import {useNavigation} from '@react-navigation/native';
+import PersonItem from './PersonItem';
 
 export default function Contacts() {
   const navigation = useNavigation<any>();
@@ -35,7 +35,7 @@ export default function Contacts() {
         </Text>
       </Pressable>
       {_.range(1, 20).map(index => (
-        <MessagesItem type="contact" key={index} />
+        <PersonItem key={index} />
       ))}
     </ScrollView>
   );
