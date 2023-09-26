@@ -6,6 +6,8 @@ import HomeScreen from './HomeScreen';
 import Settings from './Settings';
 import AddUser from './AddUser';
 import ChatModel from './ChatModel';
+import UserInfo from '../Settings/UserInfo';
+import CountSecure from '../Settings/CountSecure';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +39,16 @@ export default function Home() {
             options={{
               headerTitleAlign: 'center',
             }}
+          />
+          <Stack.Screen
+            name="UserInfo"
+            component={UserInfo}
+            options={{title: '个人信息'}}
+          />
+          <Stack.Screen
+            name="CountSecure"
+            component={CountSecure}
+            options={{title: '账户安全'}}
           />
         </Stack.Navigator>
       </ThemeContext.Provider>

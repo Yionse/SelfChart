@@ -24,10 +24,10 @@ export default function Item() {
           });
         }}>
         <Text fontSize="xl" lineHeight={24}>
-          123456
+          联系人
         </Text>
         <Text opacity="0.4" fontSize="xs">
-          你吃饭了没
+          上次发送的消息
         </Text>
       </Pressable>
     </>

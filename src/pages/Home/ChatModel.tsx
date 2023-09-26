@@ -77,7 +77,7 @@ export default function ChatModel({route, navigation}: any) {
           placeholder="请输入文字"
           rounded="full"
           height={10}
-          onChangeText={setMessage}
+          onChangeText={e => setMessage(e)}
         />
         <Button
           px={6}
