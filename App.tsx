@@ -20,9 +20,13 @@ function Main() {
     if (token === 'init') {
       navigation.navigate('Init');
     } else if (token === '登录') {
-      navigation.navigate('Home');
+      setTimeout(() => {
+        navigation.navigate('Home');
+      }, 1000);
     } else {
-      navigation.navigate('Login');
+      setTimeout(() => {
+        navigation.navigate('Login');
+      }, 1000);
     }
   }, [token]);
   const saveData = async (token: string) => {

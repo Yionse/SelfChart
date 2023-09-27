@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext, useCallback, useRef} from 'react';
 import {Formik} from 'formik';
 import {
   Icon,
@@ -11,9 +11,9 @@ import {
 } from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, BackHandler} from 'react-native';
 import {SetIndexContext, TokenContext} from '../../contexts';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 export const isClickHandle = (currentVal: string[]) => {
   return currentVal.every(str => str !== '');
@@ -23,6 +23,7 @@ export default function Login() {
   const [isShowPass, setIsShowPass] = useState(false);
   const setIndex = useContext(SetIndexContext);
   const navigation = useNavigation<any>();
+  const inputRef = useRef(null);
   const style = StyleSheet.create({
     inputStyle: {
       borderWidth: 1,
@@ -53,6 +54,21 @@ export default function Login() {
     }
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp(); // 回到桌面
+        return true; // 阻止默认的返回行为
+      };
+      // 添加事件监听器
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => {
+        // 移除事件监听器
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+      };
+    }, []),
+  );
+
   return (
     <Formik initialValues={{user: '', pass: ''}} onSubmit={onLogin}>
       {({values, handleChange, handleBlur, handleSubmit}) => {
@@ -71,6 +87,8 @@ export default function Login() {
               style={style.inputStyle}
             />
             <Input
+              ref={inputRef}
+              isDisabled={isShowPass}
               value={values.pass}
               type={isShowPass ? 'text' : 'password'}
               placeholder="请输入密码"
@@ -88,6 +106,8 @@ export default function Login() {
                 <Pressable
                   onPress={() => {
                     setIsShowPass(!isShowPass);
+                    if (isShowPass) {
+                    }
                   }}>
                   <Icon
                     as={AntDesign}
@@ -102,6 +122,11 @@ export default function Login() {
               borderRadius={20}
               style={style.inputStyle}
             />
+            {isShowPass ? (
+              <Text textAlign="right" pr={4} opacity=".3">
+                禁止输入
+              </Text>
+            ) : null}
             <View
               flexDirection="row"
               justifyContent="space-between"

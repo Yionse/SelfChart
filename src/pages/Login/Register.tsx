@@ -61,6 +61,9 @@ export default function Register() {
               {['pass', 'confirmPass'].map((typeStr: string) => {
                 return (
                   <Input
+                    isDisabled={
+                      typeStr === 'pass' ? isShowPass : isShowConfirmPass
+                    }
                     key={typeStr}
                     value={
                       typeStr === 'pass' ? values.pass : values.confirmPass
