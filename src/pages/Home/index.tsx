@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {ThemeContext} from './../../contexts';
 import theme from './../../theme/index';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,6 +14,7 @@ const Stack = createNativeStackNavigator();
 export default function Home() {
   const [themeIndex, setThemeIndex] = useState(0);
   const currentTheme = theme[themeIndex];
+
   return (
     <>
       <ThemeContext.Provider value={{themeIndex, currentTheme, setThemeIndex}}>

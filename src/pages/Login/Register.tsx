@@ -4,7 +4,7 @@ import {Icon, Input, Button, Pressable} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StyleSheet, KeyboardAvoidingView} from 'react-native';
-import {isClickHandle} from './index';
+import {isClickHandle} from './Login';
 
 export default function Register() {
   const [isShowPass, setIsShowPass] = useState(false);

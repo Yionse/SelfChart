@@ -23,7 +23,6 @@ export default function ChatModel({route, navigation}: any) {
   const inputRef = useRef<{click: () => void}>(null);
   navigation.setOptions({title: route?.params?.title});
   const [message, setMessage] = useState<string>('');
-
   const handleInput = () => {
     if (scrollRef.current) {
       scrollRef.current?.scrollToEnd({animated: false});

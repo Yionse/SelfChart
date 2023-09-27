@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useCallback} from 'react';
 import {Icon} from 'native-base';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -9,6 +9,7 @@ import {ThemeContext} from '../../contexts';
 import Info from '../Info';
 import Chart from './Chat';
 import Contacts from './Contacts';
+import {BackHandler} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,20 @@ export default function HomeScreen() {
   const [open, setOpen] = useState(false);
   const navigation = useNavigation<any>();
   const {currentTheme} = useContext(ThemeContext);
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp(); // 回到桌面
+        return true; // 阻止默认的返回行为
+      };
+      // 添加事件监听器
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => {
+        // 移除事件监听器
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+      };
+    }, []),
+  );
   return (
     <>
       <Drawer

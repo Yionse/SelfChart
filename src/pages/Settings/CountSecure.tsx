@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Text} from 'native-base';
+import {TokenContext} from '../../contexts';
 
 export default function CountSecure() {
   return (
