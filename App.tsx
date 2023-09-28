@@ -12,6 +12,7 @@ import {AsyncStorage} from 'react-native';
 import Init from './src/pages/Init';
 
 function Main() {
+  const toast = useToast();
   const Stack = createNativeStackNavigator();
   const [token, setToken] = useState<string>('init');
   const navigation = useNavigation<any>();
@@ -20,13 +21,23 @@ function Main() {
     if (token === 'init') {
       navigation.navigate('Init');
     } else if (token === '登录') {
+      toast.show({
+        description: '登录成功',
+        duration: 500,
+      });
       setTimeout(() => {
         navigation.navigate('Home');
-      }, 1000);
+      }, 500);
     } else {
+      if (navigation.getCurrentRoute().name === 'UserInfo') {
+        toast.show({
+          description: '退出登录',
+          duration: 1000,
+        });
+      }
       setTimeout(() => {
         navigation.navigate('Login');
-      }, 1000);
+      }, 500);
     }
   }, [token]);
   const saveData = async (token: string) => {

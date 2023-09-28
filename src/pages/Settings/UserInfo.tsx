@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Text} from 'native-base';
+import {Text, useToast} from 'native-base';
 import {TokenContext} from '../../contexts';
 
 export default function UserInfo() {
